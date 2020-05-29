@@ -22,12 +22,12 @@ class nodeTest {
         graph.addNode(A);
         graph.addNode(B);
 
-        graph = Reis.getShortestPath(graph, A);
+        graph = Reis.getBestPath(graph, A);
         List<String> listNodes = new ArrayList<>();
         listNodes.add("A");
         listNodes.add("B");
 
-        assertEquals(listNodes, B.getShortestPath());
+        assertEquals(listNodes, B.getBestPath());
     }
 
     @Test
@@ -38,6 +38,6 @@ class nodeTest {
         List<String> shortestPath = new ArrayList<>();
         shortestPath.add("B");
 
-        assertEquals(shortestPath, A.getShortestPath());
+        assertEquals(shortestPath, A.getBestPath());
     }
 }

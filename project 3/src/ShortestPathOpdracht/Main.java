@@ -29,15 +29,15 @@ public class Main {
         graph.addNode(Hu);
         graph.addNode(Br);
 
-        Reis.getShortestPath(graph, Zw);
+        Reis.getBestPath(graph, Zw);
         System.out.println(graph);
 
-        System.out.println(Zw.getShortestPath());
-        System.out.println(Ut.getShortestPath());
-        System.out.println(Am.getShortestPath());
-        System.out.println(Gr.getShortestPath());
-        System.out.println(Hu.getShortestPath());
-        System.out.println(Br.getShortestPath());
+        System.out.println(Zw.getBestPath());
+        System.out.println(Ut.getBestPath());
+        System.out.println(Am.getBestPath());
+        System.out.println(Gr.getBestPath());
+        System.out.println(Hu.getBestPath());
+        System.out.println(Br.getBestPath());
 
 
         // Dit stuk is voor de "Treinrit" class
@@ -65,14 +65,14 @@ public class Main {
         graph2.addNode(Berl);
         graph2.addNode(Hamb);
 
-        Reis.getShortestPath(graph2, Amst);
+        Reis.getBestPath(graph2, Amst);
 
-        System.out.println(Amst.getShortestPath());
-        System.out.println(Rott.getShortestPath());
-        System.out.println(Bruss.getShortestPath());
-        System.out.println(Munc.getShortestPath());
-        System.out.println(Berl.getShortestPath());
-        System.out.println(Hamb.getShortestPath());
+        System.out.println(Amst.getBestPath());
+        System.out.println(Rott.getBestPath());
+        System.out.println(Bruss.getBestPath());
+        System.out.println(Munc.getBestPath());
+        System.out.println(Berl.getBestPath());
+        System.out.println(Hamb.getBestPath());
 
 
         // Dit stuk is voor de "Vlucht" class
@@ -100,13 +100,13 @@ public class Main {
         graph3.addNode(London);
         graph3.addNode(Parijs);
 
-        Reis.getShortestPath(graph3, Schiphol);
+        Reis.getBestPath(graph3, Schiphol);
 
-        System.out.println(Schiphol.getShortestPath());
-        System.out.println(Dubai.getShortestPath());
-        System.out.println(LA.getShortestPath());
-        System.out.println(Tokyo.getShortestPath());
-        System.out.println(London.getShortestPath());
-        System.out.println(Parijs.getShortestPath());
+        System.out.println(Schiphol.getBestPath());
+        System.out.println(Dubai.getBestPath());
+        System.out.println(LA.getBestPath());
+        System.out.println(Tokyo.getBestPath());
+        System.out.println(London.getBestPath());
+        System.out.println(Parijs.getBestPath());
     }
 }

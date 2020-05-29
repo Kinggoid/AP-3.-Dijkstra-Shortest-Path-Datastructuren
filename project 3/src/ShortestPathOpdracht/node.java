@@ -7,8 +7,8 @@ import java.util.Queue;
 
 public class node {
     private String plaatsNaam;
-    private Queue<String> shortestPath = new LinkedList<>();
-    private Integer distance = Integer.MAX_VALUE; // Dit is voor het algoritme. Het geeft aan hoe ver weg deze node is van de beginNode.
+    private Queue<String> bestPath = new LinkedList<>();
+    private Integer waarde = Integer.MAX_VALUE; // Dit is voor het algoritme. Het geeft aan hoe ver weg deze node is van de beginNode.
     private Map<node, Double> branchesNaarAndereNodes = new HashMap<>();
 
     public node(String naam) {
@@ -23,20 +23,20 @@ public class node {
         return plaatsNaam;
     }
 
-    public void setDistance(Integer distance) {
-         this.distance = distance;
+    public void setWaarde(Integer worth) {
+         waarde = worth;
     }
 
-    public void setShortestPath(LinkedList<String> shortestPath) {
-        this.shortestPath = shortestPath;
+    public void setBestPath(LinkedList<String> bestPath) {
+        this.bestPath = bestPath;
     }
 
-    public Integer getDistance() {
-        return distance;
+    public Integer getWaarde() {
+        return waarde;
     }
 
-    public LinkedList<String> getShortestPath() {
-        return (LinkedList<String>) shortestPath;
+    public LinkedList<String> getBestPath() {
+        return (LinkedList<String>) bestPath;
     }
 
     public Map<node, Double> getReis() {
@@ -44,7 +44,7 @@ public class node {
     }
 
     public void addPath(String deelVanDeRoute) { // Dit is er om het gehele pad van begin tot eind in "shortestPath" te krijgen.
-        shortestPath.add(deelVanDeRoute);
+        bestPath.add(deelVanDeRoute);
     }
 }
 

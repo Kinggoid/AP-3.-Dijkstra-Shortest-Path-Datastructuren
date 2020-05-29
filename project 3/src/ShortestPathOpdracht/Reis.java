@@ -3,11 +3,11 @@ package ShortestPathOpdracht;
 import java.util.*;
 
 public class Reis implements Comparable {
-    public static Graph getShortestPath(Graph graph, node beginNode) { // Hier beginnen we
+    public static Graph getBestPath(Graph graph, node beginNode) { // Hier beginnen we
         Set<node> settledNodes = new HashSet<>();
         Set<node> unsettledNodes = new HashSet<>();
 
-        beginNode.setDistance(0); // De beginNode heeft een afstand van 0
+        beginNode.setWaarde(0); // De beginNode heeft een afstand van 0
         unsettledNodes.add(beginNode);
 
         while (unsettledNodes.size() != 0) { // Pas wanneer alle nodes afgegaan zijn en er geen nodes in "unsettledNodes" zitten, zijn we pas klaar.
@@ -17,37 +17,37 @@ public class Reis implements Comparable {
                 node adjacentNode = adjacencyPair.getKey(); // Een nodes waarmee hij geconnect is
                 Double edgeWeight = adjacencyPair.getValue(); // De waarde om naar deze node te gaan.
                 if (!settledNodes.contains(adjacentNode)) { // Als deze node al in settledNodes zit dan gaan we verder.
-                    calculateMinimumDistance(adjacentNode, edgeWeight, currentNode); // Het kortste pad naar deze node.
+                    calculateMinimumWaarde(adjacentNode, edgeWeight, currentNode); // Het kortste pad naar deze node.
                     unsettledNodes.add(adjacentNode);
                 }
             }
             settledNodes.add(currentNode); // Als we klaar zijn stoppen we deze node in settledNodes en dan zijn we daar klaar mee.
         }
-        for (node i: settledNodes) { // Dit is om de begin en eindNode in "shortestPath" van de node class te krijgen.
+        for (node i: settledNodes) { // Dit is om de begin en eindNode in "bestPath" van de node class te krijgen.
             i.addPath(i.getPlaatsNaam());
         }
         return graph;
     }
 
     private static node compareTo(Set<node> unsettledNodes) { // Je krijgt een paar nodes binnen en je kijkt welke de kleinste waarde daarnaartoe heeft dusver
-        node lowestDistanceNode = null;
-        int lowestDistance = Integer.MAX_VALUE;
+        node lowestWaardeNode = null;
+        int lowestWaarde = Integer.MAX_VALUE;
         for (node Node : unsettledNodes) { // Voor alle nodes die je binnenkrijgt.
-            if (Node.getDistance() < lowestDistance) { // Als de waarde naar deze node lager is dan de vorige nodes, dan slaan we deze node op als laagste waarde
-                lowestDistance = Node.getDistance();
-                lowestDistanceNode = Node;
+            if (Node.getWaarde() < lowestWaarde) { // Als de waarde naar deze node lager is dan de vorige nodes, dan slaan we deze node op als laagste waarde
+                lowestWaarde = Node.getWaarde();
+                lowestWaardeNode = Node;
             }
         }
-        return lowestDistanceNode; // Vervolgens geef je de node met de laagste waarde terug.
+        return lowestWaardeNode; // Vervolgens geef je de node met de laagste waarde terug.
     }
 
-    private static void calculateMinimumDistance(node evaluationNode, Double edgeWeigh, node sourceNode) {
-        Integer sourceDistance = sourceNode.getDistance(); // Hoe ver het is om naar deze node te gaan
-        if (sourceDistance + edgeWeigh < evaluationNode.getDistance()) {
-            evaluationNode.setDistance((int) (sourceDistance + edgeWeigh));
-            LinkedList<String> shortestPath = new LinkedList<>(sourceNode.getShortestPath());
-            shortestPath.add(sourceNode.getPlaatsNaam());
-            evaluationNode.setShortestPath(shortestPath);
+    private static void calculateMinimumWaarde(node evaluationNode, Double edgeWeigh, node sourceNode) {
+        Integer sourceWaarde = sourceNode.getWaarde(); // Hoe ver het is om naar deze node te gaan
+        if (sourceWaarde + edgeWeigh < evaluationNode.getWaarde()) { // Ze vragen hier of dit tot nu toe de beste route naar deze node is.
+            evaluationNode.setWaarde((int) (sourceWaarde + edgeWeigh)); // Dit is nu de beste waarde om hier te komen
+            LinkedList<String> bestPath = new LinkedList<>(sourceNode.getBestPath()); // In deze laatste regels passen we de beste route om naar deze node te komen aan.
+            bestPath.add(sourceNode.getPlaatsNaam());
+            evaluationNode.setBestPath(bestPath);
         }
     }
 
