@@ -28,6 +28,7 @@ public class Main {
         graph.addNode(Br);
 
         graph = Reis.getShortestPath(graph, Zw);
+        System.out.println(graph);
 
         System.out.println(Zw.getShortestPath());
         System.out.println(Ut.getShortestPath());

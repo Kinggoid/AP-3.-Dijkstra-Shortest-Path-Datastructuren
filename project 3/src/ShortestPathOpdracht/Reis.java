@@ -1,15 +1,12 @@
 package ShortestPathOpdracht;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-public class Reis {
-    private static node compareTo(Set < node > unsettledNodes) {
+public class Reis implements Comparable {
+    private static node compareTo(Set<node> unsettledNodes) {
         node lowestDistanceNode = null;
         int lowestDistance = Integer.MAX_VALUE;
-        for (node Node: unsettledNodes) {
+        for (node Node : unsettledNodes) {
             int nodeDistance = Node.getDistance();
             if (nodeDistance < lowestDistance) {
                 lowestDistance = nodeDistance;
@@ -30,10 +27,10 @@ public class Reis {
     }
 
     public static Graph getShortestPath(Graph graph, node beginNode) {
-        beginNode.setDistance(0);
-
         Set<node> settledNodes = new HashSet<>();
         Set<node> unsettledNodes = new HashSet<>();
+
+        beginNode.setDistance(0);
 
         unsettledNodes.add(beginNode);
         while (unsettledNodes.size() != 0) {
@@ -48,6 +45,9 @@ public class Reis {
                 }
             }
             settledNodes.add(currentNode);
+        }
+        for (node i: settledNodes) {
+            i.addPath(i.getPlaatsNaam());
         }
         return graph;
     }

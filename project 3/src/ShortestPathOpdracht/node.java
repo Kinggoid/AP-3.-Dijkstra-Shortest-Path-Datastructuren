@@ -3,10 +3,11 @@ package ShortestPathOpdracht;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 public class node {
     private String plaatsNaam;
-    private LinkedList<String> shortestPath = new LinkedList<>();
+    private Queue<String> shortestPath = new LinkedList<>();
     private Integer distance = Integer.MAX_VALUE;
     private Map<node, Integer> reis = new HashMap<>();
 
@@ -35,11 +36,15 @@ public class node {
     }
 
     public LinkedList<String> getShortestPath() {
-        return shortestPath;
+        return (LinkedList<String>) shortestPath;
     }
 
     public Map<node, Integer> getReis() {
         return reis;
+    }
+
+    public void addPath(String deelVanDeRoute) {
+        shortestPath.add(deelVanDeRoute);
     }
 }
 
