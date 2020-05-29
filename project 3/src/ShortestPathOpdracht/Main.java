@@ -2,6 +2,8 @@ package ShortestPathOpdracht;
 
 public class Main {
     public static void main(String[] args) {
+
+        // Dit stuk is voor de "Rit" class.
         node Zw = new node("Zwolle");
         node Ut = new node("Utrecht");
         node Am = new node("Amsterdam");
@@ -9,14 +11,14 @@ public class Main {
         node Hu = new node("Huizen");
         node Br = new node("Breda");
 
-        Zw.naar(new Rit(90, Ut));
-        Zw.naar(new Rit(113, Am));
-        Ut.naar(new Rit(186, Gr));
-        Ut.naar(new Rit(15, Br));
-        Am.naar(new Rit(10, Hu));
-        Gr.naar(new Rit(2, Hu));
-        Gr.naar(new Rit(1, Br));
-        Br.naar(new Rit(5, Hu));
+        Zw.branch(new Rit(90, Ut));
+        Zw.branch(new Rit(113, Am));
+        Ut.branch(new Rit(186, Gr));
+        Ut.branch(new Rit(15, Br));
+        Am.branch(new Rit(10, Hu));
+        Gr.branch(new Rit(2, Hu));
+        Gr.branch(new Rit(1, Br));
+        Br.branch(new Rit(5, Hu));
 
         Graph graph = new Graph();
 
@@ -27,7 +29,7 @@ public class Main {
         graph.addNode(Hu);
         graph.addNode(Br);
 
-        graph = Reis.getShortestPath(graph, Zw);
+        Reis.getShortestPath(graph, Zw);
         System.out.println(graph);
 
         System.out.println(Zw.getShortestPath());
@@ -37,6 +39,8 @@ public class Main {
         System.out.println(Hu.getShortestPath());
         System.out.println(Br.getShortestPath());
 
+
+        // Dit stuk is voor de "Treinrit" class
         node Amst = new node("Amsterdam");
         node Rott = new node("Rotterdam");
         node Bruss = new node("Brussel");
@@ -44,13 +48,13 @@ public class Main {
         node Berl = new node("Berlijn");
         node Hamb = new node("Hamburg");
 
-        Amst.naar(new Treinrit(20, Rott));
-        Rott.naar(new Treinrit(16, Berl));
-        Rott.naar(new Treinrit(22, Bruss));
-        Bruss.naar(new Treinrit(15, Munc));
-        Munc.naar(new Treinrit(19, Hamb));
-        Munc.naar(new Treinrit(24, Berl));
-        Berl.naar(new Treinrit(21, Hamb));
+        Amst.branch(new Treinrit(20, Rott));
+        Rott.branch(new Treinrit(16, Berl));
+        Rott.branch(new Treinrit(22, Bruss));
+        Bruss.branch(new Treinrit(15, Munc));
+        Munc.branch(new Treinrit(19, Hamb));
+        Munc.branch(new Treinrit(24, Berl));
+        Berl.branch(new Treinrit(21, Hamb));
 
         Graph graph2 = new Graph();
 
@@ -61,7 +65,7 @@ public class Main {
         graph2.addNode(Berl);
         graph2.addNode(Hamb);
 
-        graph2 = Reis.getShortestPath(graph2, Amst);
+        Reis.getShortestPath(graph2, Amst);
 
         System.out.println(Amst.getShortestPath());
         System.out.println(Rott.getShortestPath());
@@ -70,6 +74,8 @@ public class Main {
         System.out.println(Berl.getShortestPath());
         System.out.println(Hamb.getShortestPath());
 
+
+        // Dit stuk is voor de "Vlucht" class
         node Schiphol = new node("Schiphol");
         node Dubai = new node("Dubai International Airport");
         node LA = new node("Los Angeles International Airport");
@@ -77,13 +83,13 @@ public class Main {
         node London = new node("London Heathrow");
         node Parijs = new node("Parijs Charles de Gaulle");
 
-        Schiphol.naar(new Vlucht(100, 20, London));
-        Dubai.naar(new Vlucht(550, 15, Parijs));
-        Dubai.naar(new Vlucht(400, 45, Tokyo));
-        LA.naar(new Vlucht(300, 30, Tokyo));
-        London.naar(new Vlucht(450, 23, Dubai));
-        Parijs.naar(new Vlucht(300, 10, LA));
-        Parijs.naar(new Vlucht(450, 80, Dubai));
+        Schiphol.branch(new Vlucht(100, 20, London));
+        Dubai.branch(new Vlucht(550, 15, Parijs));
+        Dubai.branch(new Vlucht(400, 45, Tokyo));
+        LA.branch(new Vlucht(300, 30, Tokyo));
+        London.branch(new Vlucht(450, 23, Dubai));
+        Parijs.branch(new Vlucht(300, 10, LA));
+        Parijs.branch(new Vlucht(450, 80, Dubai));
 
         Graph graph3 = new Graph();
 
@@ -94,7 +100,7 @@ public class Main {
         graph3.addNode(London);
         graph3.addNode(Parijs);
 
-        graph3 = Reis.getShortestPath(graph3, Schiphol);
+        Reis.getShortestPath(graph3, Schiphol);
 
         System.out.println(Schiphol.getShortestPath());
         System.out.println(Dubai.getShortestPath());

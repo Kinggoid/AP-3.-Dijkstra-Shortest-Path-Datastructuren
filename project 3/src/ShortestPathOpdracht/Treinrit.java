@@ -1,8 +1,8 @@
 package ShortestPathOpdracht;
 
 public class Treinrit extends Stap {
-    private int metersPerSeconde;
-    private node Node;
+    private int metersPerSeconde; // De waarde om naar deze node te gaan.
+    private node Node; // Deze node
 
     public Treinrit(int afstand, node bestemming) {
         metersPerSeconde = afstand;
@@ -13,7 +13,7 @@ public class Treinrit extends Stap {
         return Node;
     }
 
-    public int returnAfstand() {
+    public double returnAfstand() {
         return metersPerSeconde;
     }
 }

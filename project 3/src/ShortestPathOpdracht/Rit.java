@@ -1,8 +1,8 @@
 package ShortestPathOpdracht;
 
 public class Rit extends Stap {
-    private int afstandNaarDeVolgendeBestemming;
-    private node Node;
+    private int afstandNaarDeVolgendeBestemming; // De waarde om naar deze node te gaan.
+    private node Node; // Deze node
 
     public Rit(int afstand, node bestemming) {
         afstandNaarDeVolgendeBestemming = afstand;
@@ -13,7 +13,9 @@ public class Rit extends Stap {
         return Node;
     }
 
-    public int returnAfstand() {
+    public double returnAfstand() {
         return afstandNaarDeVolgendeBestemming;
     }
+
+
 }
